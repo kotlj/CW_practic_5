@@ -6,44 +6,49 @@ using System.Threading.Tasks;
 
 namespace CW_practic_5
 {
-    internal class Program
+    class Bicycle
     {
-        class Bicycle
+        private int wheelsMuch;
+        private string firm;
+        private bool isWork;
+        private static int totalProducted;
+
+        public Bicycle(int _wheelsMuch, string _firm, bool _isWork)
         {
-            private int wheelsMuch;
-            private string firm;
-            private bool isWork;
-            public static int totalProducted;
+            wheelsMuch = _wheelsMuch;
+            firm = _firm;
+            isWork = _isWork;
+            totalProducted++;
+        }
 
-            public Bicycle(int _wheelsMuch, string _firm, bool _isWork)
+        static Bicycle()
+        {
+            totalProducted = 0;
+        }
+
+        public void ride()
+        {
+            if (isWork)
             {
-                wheelsMuch = _wheelsMuch;
-                firm = _firm;
-                isWork = _isWork;
-                totalProducted++;
+                Console.WriteLine("WeHe-e-e!");
             }
-
-            static Bicycle()
+            else
             {
-                totalProducted = 0;
-            }
-
-            public void ride()
-            {
-                if (isWork)
-                {
-                    Console.WriteLine("WeHe-e-e!");
-                }
-                else
-                {
-                    Console.WriteLine("Need repair");
-                }
+                Console.WriteLine("Need repair");
             }
         }
+        static public int getProducted()
+        {
+            return totalProducted;
+        }
+    }
+    internal class Program
+    {
+        
         static void Main(string[] args)
         {
             Bicycle test = new Bicycle(2, "Someone", true);
-            Console.WriteLine(Bicycle.totalProducted);
+            Console.WriteLine(Bicycle.getProducted());
         }
     }
 }
